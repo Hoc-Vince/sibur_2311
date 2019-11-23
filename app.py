@@ -27,13 +27,26 @@ def generate_table(dataframe, max_rows=3):
         ]) for i in range(min(len(dataframe), max_rows))]
     )
 
+table_header_style = {
+    "backgroundColor": "rgb(2,21,70)",
+    "color": "white",
+    "textAlign": "center",
+}
+
+
 colors = {
     'background': '#222222',
     'text': '#7FDBFF'
 }
 
 app.layout = html.Div(children=[
-    html.H1(children='Прогноз цен ПЭТФ'),
+    html.Div(
+            className="pkcalc-banner",
+            children=[
+            html.H2("Прогноз цен ПЭТФ"),
+            ],
+        ),
+    
 
     html.Div(children='''
         Интеракивный график прогноза цены ПЭТФ
@@ -53,7 +66,7 @@ app.layout = html.Div(children=[
     html.Div(id='my-div'),  
 
     html.Div([
-    html.Div([html.H1("Ebola Cases Reported in Africa - 2014")], style={"textAlign": "center"}),
+    html.Div([html.H1("Влияние параметров на модель")], style={"textAlign": "center"}),
     dcc.Graph(id="my-graph-pie"),
     html.Div([dcc.Slider(id='month-selected', min=3, max=12, value=8,
                          marks={3: "March", 4: "April", 5: "May", 6: "June", 7: "July", 8: "August", 9: "September",
